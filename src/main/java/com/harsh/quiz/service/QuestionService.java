@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.harsh.quiz.Question;
-import com.harsh.quiz.DAO.QuestionDAO;
+import com.harsh.quiz.dao.QuestionDAO;
 
 @Service
 public class QuestionService {
@@ -16,5 +16,15 @@ public class QuestionService {
 	
 	public List<Question> getAllQuestions(){
 		return questionDAO.findAll();
+	}
+	
+	public List<Question> getQuestionsByCategory(String category){
+		return questionDAO.findByCategory(category);
+	}
+	
+	public String addQuestion(Question question) {
+		questionDAO.save(question);
+		
+		return "sucess";
 	}
 }
