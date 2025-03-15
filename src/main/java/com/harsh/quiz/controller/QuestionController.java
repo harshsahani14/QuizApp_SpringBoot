@@ -32,7 +32,8 @@ public class QuestionController {
 	}
 	
 	@PostMapping("add")
-	public String addQuestion(@RequestBody Question question) {
+	public Question addQuestion(@RequestBody Question question) {
+		System.out.println(question.toString());
 		
 		return questionService.addQuestion(question);
 		
