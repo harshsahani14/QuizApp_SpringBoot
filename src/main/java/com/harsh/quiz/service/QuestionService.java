@@ -9,8 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.harsh.quiz.dao.QuestionDAO;
-
-import model.Question;
+import com.harsh.quiz.model.Question;
 
 @Service
 public class QuestionService {
