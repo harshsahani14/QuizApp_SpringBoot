@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -34,8 +35,8 @@ public class QuizController {
 		return quizService.getQuiz(id);
 	}
 	
-	@GetMapping("sublit/{id}")
-	public ResponseEntity<Integer> calculateResult(@PathVariable int id, List<Response> responses){
+	@GetMapping("submit/{id}")
+	public ResponseEntity<List<Integer>> calculateResult(@PathVariable int id,@RequestBody List<Response> responses){
 		return quizService.calculateResult(id,responses);
 	}
 	

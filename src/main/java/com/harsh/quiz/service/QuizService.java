@@ -1,6 +1,7 @@
 package com.harsh.quiz.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,11 +60,12 @@ public class QuizService {
 	}
 
 
-	public ResponseEntity<Integer> calculateResult(int id, List<Response> responses) {
+	public ResponseEntity<List<Integer>> calculateResult(int id, List<Response> responses) {
 		
 		Optional<Quiz> quiz = quizDao.findById(id);
 		
 		List<Question> questions = quiz.get().getQuestions();
+		
 		int rightCount = 0;
 		
 		for(int i=0;i<responses.size();i++) {
@@ -72,7 +74,7 @@ public class QuizService {
 				rightCount++;
 			}
 		}
-		return new ResponseEntity<>(rightCount,HttpStatus.OK);
+		return new ResponseEntity<>(new ArrayList<>(Arrays.asList(rightCount,questions.size())),HttpStatus.OK);
 	}
 
 }
